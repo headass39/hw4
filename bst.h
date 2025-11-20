@@ -394,8 +394,8 @@ template<class Key, class Value>
 typename BinarySearchTree<Key, Value>::iterator
 BinarySearchTree<Key, Value>::begin() const
 {
-    BinarySearchTree<Key, Value>::iterator begin(getSmallestNode());
-    return begin;
+    BinarySearchTree<Key, Value>::iterator beginit(getSmallestNode());
+    return beginit;
 }
 
 /**
@@ -405,8 +405,8 @@ template<class Key, class Value>
 typename BinarySearchTree<Key, Value>::iterator
 BinarySearchTree<Key, Value>::end() const
 {
-    BinarySearchTree<Key, Value>::iterator end(NULL);
-    return end;
+    BinarySearchTree<Key, Value>::iterator endit(NULL);
+    return endit;
 }
 
 /**
@@ -533,8 +533,7 @@ BinarySearchTree<Key, Value>::predecessor(Node<Key, Value>* current)
     if (current->getLeft() != NULL)
     {
         Node<Key, Value>* pred = current->getLeft();
-        while (pred->getRight() != NULL)
-            pred = pred->getRight();
+        while (pred->getRight() != NULL) {pred = pred->getRight();}
         return pred;
     }
 
@@ -553,10 +552,9 @@ Node<Key,Value>* BinarySearchTree<Key,Value>::successor(Node<Key,Value>* current
 
     if (current->getRight() != NULL)
     {
-        Node<Key,Value>* suc = current->getRight();
-        while (suc->getLeft() != NULL)
-            suc = suc->getLeft();
-        return suc;
+        Node<Key,Value>* succ = current->getRight();
+        while (succ->getLeft() != NULL) {succ = succ->getLeft();}
+        return succ;
     }
 
     Node<Key,Value>* parent = current->getParent();
